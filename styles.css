@@ -1,0 +1,146 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@400;700&display=swap');
+body {
+    font-family: 'Noto Kufi Arabic', sans-serif;
+    background-color: #f9fafb; /* bg-gray-50 */
+}
+.reagent-btn {
+    background-color: #1e3a8a; /* bg-blue-900 */
+    color: #fcd34d; /* text-yellow-400 */
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    transition: background-color 0.2s;
+    font-weight: 500;
+}
+.reagent-btn:hover:not(:disabled) {
+    background-color: #1e40af; /* bg-blue-800 */
+}
+.reagent-btn:disabled {
+    background-color: #9ca3af; /* bg-gray-400 */
+    cursor: not-allowed;
+    color: #f3f4f6;
+}
+.log-item {
+    padding: 0.5rem;
+    border-bottom: 1px solid #e5e7eb;
+}
+.log-positive {
+    background-color: #d1fae5; /* bg-green-100 */
+}
+.log-negative {
+    background-color: #fee2e2; /* bg-red-100 */
+}
+.reset-btn {
+    background-color: #f97316; /* bg-orange-500 */
+    transition: background-color 0.2s;
+}
+.reset-btn:hover {
+    background-color: #ea580c; /* bg-orange-600 */
+}
+.action-btn {
+    background-color: #38a169; /* bg-emerald-600 */
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    transition: background-color 0.2s;
+    font-weight: 500;
+    margin-top: 0.5rem;
+}
+.action-btn:hover:not(:disabled) {
+    background-color: #2f855a;
+}
+
+/* Test Tube Styling */
+#test-tube-container {
+    width: 100%;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    margin-bottom: 1.5rem;
+}
+#test-tube {
+    width: 80px;
+    height: 250px;
+    background-color: #fff;
+    border: 3px solid #6b7280; /* Gray border */
+    border-radius: 0 0 40px 40px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column-reverse; /* For precipitates */
+}
+#salt-contents {
+    width: 100%;
+    height: 100%;
+    background-color: #f3f4f6; /* Initial salt color (light gray) */
+    position: relative;
+    transition: all 0.5s ease;
+}
+
+/* Chemical Effects (Animation/Color Changes) */
+
+/* Precipitates */
+.ppt {
+    width: 100%;
+    height: 15px; /* Height of the precipitate layer */
+    position: absolute;
+    bottom: 0;
+    opacity: 0.9;
+    z-index: 10;
+    transition: height 0.3s ease, opacity 0.3s ease;
+}
+.white-ppt { background-color: rgba(255, 255, 255, 0.9); border-top: 1px solid #ccc; }
+.yellow-ppt { background-color: rgba(255, 255, 0, 0.9); border-top: 1px solid #cc0; }
+.dissolved { height: 0 !important; opacity: 0 !important; } /* For solubility test */
+
+/* Fizzing - Made more prominent */
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    10%, 30%, 50%, 70%, 90% { transform: translateX(-4px); }
+    20%, 40%, 60%, 80% { transform: translateX(4px); }
+}
+@keyframes bubbles {
+    0% { background-position: 0 100%; }
+    100% { background-position: 0 0; }
+}
+.fizzing {
+    animation: bubbles 0.8s linear infinite, shake 0.3s infinite alternate; /* Faster bubbles + shaking */
+}
+
+/* Fumes/Gas Color */
+.brown-fumes::after {
+    content: '';
+    position: absolute;
+    top: -20px;
+    left: 5px;
+    right: 5px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(139, 69, 19, 0.8); /* Brown/Orange */
+}
+.violet-fumes::after {
+    content: '';
+    position: absolute;
+    top: -20px;
+    left: 5px;
+    right: 5px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(148, 0, 211, 0.8); /* Violet */
+}
+
+/* Specific confirmatory colors */
+.orange-ppt { background-color: #f6ad55; border-top: 300px solid #f6ad55; } /* Initial K2Cr2O7 color */
+.green-ppt { background-color: #6ee7b7; border-top: 300px solid #6ee7b7; } /* Transition to Emerald Green */
+
+/* Ammonia Cloud */
+.ammonia-cloud {
+    content: '';
+    position: absolute;
+    top: -20px;
+    left: 5px;
+    right: 0px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.8);
+}
